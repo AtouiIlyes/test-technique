@@ -1,0 +1,66 @@
+.party-card {
+  padding: 0 0 16px;
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  position: relative;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 15px;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  width: 50%;
+  left: 25%;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.title_box {
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+}
+
+.title_box #title {
+  position: relative;
+  top: -7px;
+  margin-left: 10px;
+  display: inline;
+  background-color: white;
+}
+
+.title_box #content {
+}
+.party-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  max-height: 48px;
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+.party-container {
+  display: block;
+  margin-bottom: 16px;
+  min-height: 2.4em;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.party-item {
+  display: flex;
+  width: 100%;
+}
+
+.party-item-label {
+  font-weight: 600;
+}
+
+.party-item-value {
+  margin-left: 5px;
+}
+
+.party-footer {
+  margin: 10px;
+  padding-left: 10px;
+}

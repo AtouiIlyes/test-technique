@@ -1,0 +1,57 @@
+<div class="party-card">
+  <div class="title_box" [style.background]="getPartyBackground(data.nb_place)">
+    <div class="party-title" id="title">
+      {{ data.title }}
+    </div>
+
+    <div class="party-container" id="content">
+      <div class="party-item">
+        <div class="party-item-label">Date:</div>
+        <div class="party-item-value">{{ data.date }}</div>
+      </div>
+
+      <div class="party-item">
+        <div class="party-item-label">Type:</div>
+        <div class="party-item-value">{{ data.type }}</div>
+      </div>
+
+      <div class="party-item">
+        <div class="party-item-label">Nombre de places:</div>
+        <div class="party-item-value">{{ data.nb_place }}</div>
+      </div>
+
+      <div class="party-item">
+        <div class="party-item-label">Nombre de places disponibles :</div>
+        <div class="party-item-value">{{ data.nb_place_available }}</div>
+      </div>
+      <div class="party-item">
+        <div class="party-item-label">Description:</div>
+        <div class="party-item-value">{{ data.description }}</div>
+      </div>
+    </div>
+    <div class="party-footer">
+      <button mat-raised-button (click)="showForm = true">Réserver</button>
+      <div *ngIf="showForm" class="title_box" style="margin-top: 10px">
+        <div style="padding: 10px; background: rgba(0, 0, 0, 0.14)">
+          <div
+            class="party-item-label"
+            style="color: white; font-weight: 500 !important"
+          >
+            Nombre de places à réserver :
+          </div>
+          <div style="margin-top: 5px">
+            <input
+              [(ngModel)]="reservedNbPlace"
+              placeholder="saisir un nombre"
+            />
+          </div>
+          <div style="margin-top: 5px">
+            <button mat-raised-button (click)="Reserve(data.id)">
+              Valider
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

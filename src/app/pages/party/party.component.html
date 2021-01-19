@@ -1,0 +1,9 @@
+<div class="parties">
+  <h1 style="color: white">Welcome to Jetset magazine!</h1>
+  <div *ngFor="let party of parties">
+    <app-party-detail
+      [data]="party"
+      (reserve)="reservePlaces($event)"
+    ></app-party-detail>
+  </div>
+</div>

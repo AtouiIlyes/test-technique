@@ -1,0 +1,75 @@
+<div class="doctors">
+  <h1 style="color: white">Prise de rendez-vous en ligne</h1>
+  <div style="color: white">recherche d'un médecin</div>
+  <div style="display: flex">
+    <div style="color: white; margin-right: 10px">Spécialité:</div>
+    <div>
+      <select #select (change)="onChangeSpeciality(select.value)">
+        <option *ngFor="let specialty of specialities" [value]="specialty.id">
+          {{ specialty.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="doctorsBySpecialities.length > 0">
+    <h3 style="color: white">Liste des médecins</h3>
+    <table
+      mat-table
+      style="width: 100%"
+      [dataSource]="doctorsBySpecialities"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="specialty">
+        <th mat-header-cell *matHeaderCellDef>Spécialité</th>
+        <td mat-cell *matCellDef="let element">
+          {{ getSpeciality(element.specialty) }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="availability">
+        <th mat-header-cell *matHeaderCellDef>Disponibilité</th>
+        <td mat-cell *matCellDef="let element">{{ element.availability }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="reserve">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            [disabled]="!element.availability"
+            (click)="selectDoctor(element)"
+          >
+            Prendre rendez-vous
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div *ngIf="showReserve" style="padding: 20px; text-align: left">
+      <input
+        style="padding: 5px"
+        [disabled]="true"
+        [(ngModel)]="selectedDoctor.name"
+      />
+      <div style="padding: 10px; display: flex">
+        <div class="party-item-label" style="color: white">
+          Nom de patient :
+        </div>
+        <div style="margin-left: 5px">
+          <input [(ngModel)]="patient" placeholder="saisir un nombre" />
+        </div>
+      </div>
+      <div style="margin-top: 5px">
+        <button mat-raised-button (click)="confirmReservation()">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
